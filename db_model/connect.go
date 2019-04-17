@@ -20,12 +20,3 @@ func GormConnect() *gorm.DB {
 	}
 	return db
 }
-
-func DbCreate() {
-	db := GormConnect()
-	db.Set("gorm:table_options", "ENGINE=InnoDB")
-	db.AutoMigrate(&User{})
-	defer db.Close()
-
-	db.LogMode(true)
-}

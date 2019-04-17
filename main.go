@@ -6,7 +6,8 @@ import (
 
 func main() {
 	db := db_model.GormConnect()
-	db_model.DbCreate()
+	db.Set("gorm:table_options", "ENGINE=InnoDB")
+	db.AutoMigrate(&db_model.User{})
 
 	defer db.Close()
 
